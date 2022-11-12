@@ -1,0 +1,150 @@
+/*
+Theme Name: Flatsome Child
+Description: This is a child theme for Flatsome Theme
+Author: UX Themes
+Template: flatsome
+Version: 3.0
+*/
+
+/*************** ADD CUSTOM CSS HERE.   ***************/
+/* section{
+    padding-bottom: 0 !important;
+} */
+/* Header */
+.header-main {
+    background: url(../../uploads/2020/12/kisspng-logo-brand-payment-image-product-design-cufflins-the-sultans-of-swag-5b7fa2a591c671.3861859615350913655971.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+/* Footer */
+.widget li {
+    list-style: disc;
+    margin-left: 1em;
+}
+
+/* Home */
+
+.title-heading h1{
+    background: url(../../uploads/2020/12/bg-heading.png)no-repeat bottom;
+    margin-bottom: 1em;
+    text-align: center;
+    color: #76925d !important;
+    font-size: 2em;
+    padding-bottom: 10px;
+}
+.btn-readmore{
+    text-align: center;
+}
+.btn-readmore a.button:before {
+  display: none;
+}
+.btn-readmore a.button {
+  box-shadow: 0 35px 0 0 #76925d inset;
+  transition: box-shadow 0.4s;
+  color: #fff;
+  padding: 0 15px;
+  margin-top: 40px;
+}
+.btn-readmore a.button:hover {
+  box-shadow: 0 0 0 0 #76925d inset, 0 3px 0 0 #76925d;
+  transition: box-shadow 0.4s;
+  color: #76925d;
+}
+
+.btn-readmore .icon-animation {
+  animation: icon-animation 2s ease infinite;
+}
+.btn-readmore .icon-animation i {
+  transform: rotate(90deg);
+  font-size: 22px;
+  color: #76925d;
+}
+@keyframes icon-animation {
+  0% {
+    transform: translateY(-80%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-80%);
+  }
+}
+.trademark .box-CEO img {
+  border-radius: 28%;
+}
+.trademark .box-CEO .box-img .box-text p:nth-child(1) {
+  font-size: 22px;
+  color: #76925d;
+  font-weight: bold;
+}
+.trademark .box-CEO .box-img .box-text p:nth-child(2) {
+  font-size: 17px;
+  color: #000;
+  font-style: italic;
+}
+.trademark {
+  position: relative;
+}
+.trademark .icon-text, .trademark-label .icon-text{
+  position: absolute;
+  bottom: -125px;
+  right: 0;
+}
+.trademark .icon-text p, .trademark-label .icon-text p {
+  font-size: 148px;
+  font-family: "UTM Bebas";
+  margin: 0;
+  color: rgba(37, 37, 37, 0.05);
+}
+.feature .box-text h3{
+    color: #76925d;
+    font-size: 23px;
+    letter-spacing: 1px;
+    margin: 16px 0;
+ 
+}
+.feature .box-text ul {
+  list-style: none;
+  font-size: 24px;
+}
+.feature .box-text ul li {
+  margin-left: 0.5em;
+}
+.feature .box-text ul li:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f56b";
+  display: inline-block;
+  padding-right: 8px;
+  vertical-align: middle;
+  font-weight: 900;
+  color:#76925d;
+}
+
+.title-child p{
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    color: #76925d;
+    display: inline-block;
+    background: url(../../uploads/2021/01/Thiet_ke_khong_ten__4_-removebg-preview.png)no-repeat bottom;
+    margin-bottom: 1em;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.feature .box-img{
+    padding: 0;
+    position: absolute;
+    bottom: -55%;
+    right: 0;
+    z-index: -1;
+}
+
+
+
+@media only screen and (max-width: 48em) {
+/*************** ADD MOBILE ONLY CSS HERE  ***************/
+
+
+}
