@@ -46,6 +46,31 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            # Site
+            Route::middleware('web')->prefix('/')->name('site.')->group(function () {
+                #home
+                Route::namespace($this->namespace)
+                    ->group(base_path('routes/web/site/index.php'));
+
+                #parentCategory
+                Route::prefix('/{parentCategorySlug}.html')->name('parentCategory.')->group(function () {
+                    Route::namespace($this->namespace)
+                        ->group(base_path('routes/web/site/parentCategory.php'));
+                });
+
+                #product
+                Route::prefix('/san-pham')->name('product.')->group(function () {
+                    Route::namespace($this->namespace)
+                        ->group(base_path('routes/web/site/product.php'));
+                });
+
+                #subCategory
+                Route::prefix('/{parentCategorySlug}')->name('subCategory.')->group(function () {
+                    Route::namespace($this->namespace)
+                        ->group(base_path('routes/web/site/subCategory.php'));
+                });
+            });
         });
     }
 
