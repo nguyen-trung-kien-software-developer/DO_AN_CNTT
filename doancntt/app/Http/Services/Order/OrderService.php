@@ -425,7 +425,7 @@ class OrderService
         try {
             $order = Order::find($order_id);
             if (count($order->orderItems) > 0) {
-                Session::flash('error', 'Đơn hàng đã sản phẩm được mua. Vui lòng xóa sản phẩm được mua trước !');
+                Session::flash('error', 'Đơn hàng đã có sản phẩm được mua. Vui lòng xóa sản phẩm được mua trước !');
                 return false;
             }
 

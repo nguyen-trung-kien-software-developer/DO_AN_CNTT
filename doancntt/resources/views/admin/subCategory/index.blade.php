@@ -17,6 +17,7 @@
                                     <tr>
                                         <th>Mã</th>
                                         <th>Tên danh mục</th>
+                                        <th>Icon</th>
                                         <th>Danh Mục Chính</th>
                                         @can('Chỉnh sửa danh mục phụ')
                                             <th>Chỉnh sửa</th>
@@ -31,6 +32,12 @@
                                         <tr>
                                             <td>{{ $subCategory->id }}</td>
                                             <td>{{ $subCategory->name }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ asset("storage/uploads/$subCategory->icon_image") }}"
+                                                    target="_blank"><img
+                                                        src="{{ asset("storage/uploads/$subCategory->icon_image") }}"
+                                                        width="80px"></a>
+                                            </td>
                                             <td>{{ $subCategory->parentCategory->name }}</td>
                                             @can('Chỉnh sửa danh mục phụ')
                                                 <td><a href="{{ route('admin.subCategory.edit', [$subCategory->id]) }}"
@@ -48,13 +55,10 @@
                                     <tr>
                                         <th>Mã</th>
                                         <th>Tên danh mục</th>
+                                        <th>Icon</th>
                                         <th>Danh Mục Chính</th>
-                                        @can('Chỉnh sửa danh mục phụ')
-                                            <th>Chỉnh sửa</th>
-                                        @endcan
-                                        @can('Xóa danh mục phụ')
-                                            <th>Xóa</th>
-                                        @endcan
+                                        <th>Chỉnh sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

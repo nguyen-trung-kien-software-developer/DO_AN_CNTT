@@ -33,13 +33,15 @@ class CreateProductsTable extends Migration
 
             $table->foreign('category_id')
                 ->references('id')
-                ->on('sub_categories');
+                ->on('sub_categories')
+                ->onDelete('cascade');
 
             $table->integer('brand_id')->unsigned();
 
             $table->foreign('brand_id')
                 ->references('id')
-                ->on('brands');
+                ->on('brands')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

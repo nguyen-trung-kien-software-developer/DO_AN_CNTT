@@ -7,6 +7,11 @@ Route::group(['middleware' => ['permission:Hiển thị danh sách danh mục ch
     Route::get('/danh-sach-danh-muc-chinh', [ParentCategoryController::class, 'index'])->name('index');
 });
 
+Route::group(['middleware' => ['permission:Xem bài giới thiệu của danh mục chính']], function () {
+    Route::get('/gioi-thieu/{parentCategory}', [ParentCategoryController::class, 'introduction'])->name('introduction');
+    Route::put('/gioi-thieu/{parentCategory}', [ParentCategoryController::class, 'updateIntroduction'])->name('updateIntroduction');
+});
+
 Route::group(['middleware' => ['permission:Thêm danh mục chính']], function () {
     Route::get('/tao-moi', [ParentCategoryController::class, 'create'])->name('create');
     Route::post('/tao-moi', [ParentCategoryController::class, 'store'])->name('store');

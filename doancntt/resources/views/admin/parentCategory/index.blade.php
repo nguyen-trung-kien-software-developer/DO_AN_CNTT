@@ -17,6 +17,9 @@
                                     <tr>
                                         <th>Mã</th>
                                         <th>Tên danh mục</th>
+                                        @can('Xem bài giới thiệu của danh mục chính')
+                                            <th>Bài giới thiệu danh mục</th>
+                                        @endcan
                                         @can('Chỉnh sửa danh mục chính')
                                             <th>Chỉnh sửa</th>
                                         @endcan
@@ -30,6 +33,10 @@
                                         <tr>
                                             <td>{{ $parentCategory->id }}</td>
                                             <td>{{ $parentCategory->name }}</td>
+                                            @can('Xem bài giới thiệu của danh mục chính')
+                                                <td><a href="{{ route('admin.parentCategory.introduction', [$parentCategory->id]) }}"
+                                                        class="btn btn-primary">Xem</a></td>
+                                            @endcan
                                             @can('Chỉnh sửa danh mục chính')
                                                 <td><a href="{{ route('admin.parentCategory.edit', [$parentCategory->id]) }}"
                                                         class="btn btn-info">Sửa</a></td>
@@ -46,12 +53,10 @@
                                     <tr>
                                         <th>Mã</th>
                                         <th>Tên danh mục</th>
-                                        @can('Chỉnh sửa danh mục chính')
-                                            <th>Chỉnh sửa</th>
-                                        @endcan
-                                        @can('Xóa danh mục chính')
-                                            <th>Xóa</th>
-                                        @endcan
+                                        <th>Bài giới thiệu danh mục</th>
+
+                                        <th>Chỉnh sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

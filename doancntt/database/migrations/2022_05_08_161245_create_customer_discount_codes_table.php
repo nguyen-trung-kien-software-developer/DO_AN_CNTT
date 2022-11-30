@@ -18,13 +18,15 @@ class CreateCustomerDiscountCodesTable extends Migration
 
             $table->foreign('discount_code_id')
                 ->references('id')
-                ->on('discount_codes');
+                ->on('discount_codes')
+                ->onDelete('cascade');
 
             $table->integer('customer_id')->unsigned();
 
             $table->foreign('customer_id')
                 ->references('id')
-                ->on('customers');
+                ->on('customers')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -18,9 +18,9 @@
                                         <th>Mã</th>
                                         <th>Tên Sản Phẩm</th>
                                         <th>Hình ảnh</th>
-                                        {{-- @can('Xóa hình ảnh liên quan sản phẩm') --}}
-                                        <th>Xóa</th>
-                                        {{-- @endcan --}}
+                                        @can('Xóa hình ảnh liên quan sản phẩm')
+                                            <th>Xóa</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,11 +33,11 @@
                                                         src="{{ asset("storage/uploads/$image->name") }}"
                                                         width="80px"></a>
                                             </td>
-                                            {{-- @can('Xóa hình ảnh liên quan sản phẩm') --}}
-                                            <td><button class="btn btn-danger btn sweet-confirm destroy"
-                                                    data-url="{{ route('admin.product.deleteImageItems', $image->id) }}">Xóa</button>
-                                            </td>
-                                            {{-- @endcan --}}
+                                            @can('Xóa hình ảnh liên quan sản phẩm')
+                                                <td><button class="btn btn-danger btn sweet-confirm destroy"
+                                                        data-url="{{ route('admin.product.deleteImageItems', $image->id) }}">Xóa</button>
+                                                </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>

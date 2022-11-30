@@ -51,7 +51,7 @@
 
                 <li style="float: left;width: 100%;background: #e8eaee;height: 20px"></li>
                 <li>
-                    <a href="https://nhansamthinhphat.com">
+                    <a href="{{ route('site.home') }}">
                         <p class="icon_home_mb" style="color:rgb(31, 188, 0);border:1px solid rgb(31, 188, 0)"></p>
                         <b style="display: inline-block;margin-top: 5px">Trang chủ</b>
                     </a>
@@ -60,6 +60,11 @@
                     <a href="{{ route('site.home') }}">
                         <p class="icon_home_mb"></p>
                         Trang chủ
+                    </a>
+                </li>
+                <li> <a href="{{ route('site.showAllProduct') }}"> <span class="icon_fonts_menu fa-solid fa-boxes"
+                            style="color:rgb(31, 188, 0);border:1px solid rgb(31, 188, 0)"> </span> <b>Tất cả sản
+                            phẩm</b>
                     </a>
                 </li>
                 @foreach ($headerData->parentCategories as $parentCategory)
@@ -147,7 +152,8 @@
                     @php
                         $logo = $headerData->company->logo;
                     @endphp
-                    <img src="{{ asset("storage/uploads/$logo") }}" alt="" width="65" style="height: auto">
+                    <img src="{{ asset("storage/uploads/$logo") }}" alt="" width="65"
+                        style="height: auto">
                 </a>
 
                 <div id="filter_sort_mobile">
@@ -159,9 +165,10 @@
                 </div>
             </header>
             <div id="frm_search_mobile">
-                <form action="{{ route('site.searchProduct') }}" class="clearfix"> <input type="text" name="q"
-                        value="" placeholder="Tìm kiếm sản phẩm" required=""> <button class="submit"
-                        id="btn_search"><i class="fa fa-search" aria-hidden="true"></i></button> </form>
+                <form action="{{ route('site.searchProduct') }}" class="clearfix"> <input type="text"
+                        name="q" value="" placeholder="Tìm kiếm sản phẩm" required=""> <button
+                        class="submit" id="btn_search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
             </div>
 
         </div>
@@ -178,7 +185,9 @@
             </div>
             <div class="menu_hide">
                 <div class="cate_home">
-                    <p class="cate_parent_name">Danh mục sản phẩm</p>
+                    <a href="{{ route('site.showAllProduct') }}">
+                        <p class="cate_parent_name">Tất cả sản phẩm</p>
+                    </a>
                 </div>
                 <ul class="hide_ul_menu">
                     @foreach ($headerData->parentCategories as $parentCategory)
@@ -204,15 +213,16 @@
                 <form id="form_search" name="form_search" action="{{ route('site.searchProduct') }}">
                     <div class="input-group">
                         <select class="select_search_header" name="cate" id="s_cate">
-                            <option value="" {{ empty(request()->input('cate')) ? 'selected' : '' }}>Tất cả</option>
+                            <option value="" {{ empty(request()->input('cate')) ? 'selected' : '' }}>Tất cả
+                            </option>
                             @foreach ($headerData->parentCategories as $parentCategory)
                                 <option value="{{ $parentCategory->id }}"
                                     {{ request()->input('cate') == $parentCategory->id ? 'selected' : '' }}>
                                     {{ $parentCategory->name }}</option>
                             @endforeach
                         </select>
-                        <input type="text" class="input_search" name="q" value="{{ request()->input('q') }}"
-                            id="s_keyword" required />
+                        <input type="text" class="input_search" name="q"
+                            value="{{ request()->input('q') }}" id="s_keyword" required />
                         <button type="submit" id="btn_search" class="input_search_sm">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
@@ -236,7 +246,8 @@
 
                     @if (Auth::guard('customer')->check())
                         <li style="user-select: auto;">
-                            <p style="user-select: auto;"><i class="icon-taikhoan" style="user-select: auto;"></i></p>
+                            <p style="user-select: auto;"><i class="icon-taikhoan" style="user-select: auto;"></i>
+                            </p>
                             <span class="account_header" style="user-select: auto;">
                                 <a href="{{ route('site.customer.accountInformation') }}"
                                     style="user-select: auto;">{{ Auth::guard('customer')->user()->name }}</a>
@@ -269,8 +280,10 @@
                     @else
                         <li>
                             <p><i class="icon-dangky"></i></p>
-                            <span><a href="{{ route('site.customer.register') }}" title="Đăng ký">Đăng ký</a></span>
-                            <span><a href="{{ route('site.customer.login') }}" title="Đăng nhập">Đăng nhập</a></span>
+                            <span><a href="{{ route('site.customer.register') }}" title="Đăng ký">Đăng
+                                    ký</a></span>
+                            <span><a href="{{ route('site.customer.login') }}" title="Đăng nhập">Đăng
+                                    nhập</a></span>
                         </li>
                     @endif
 

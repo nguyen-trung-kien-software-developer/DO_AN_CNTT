@@ -18,25 +18,32 @@
                                         <th>Mã</th>
                                         <th>Barcode</th>
                                         <th>Tên</th>
+                                        <th>Trọng lượng</th>
+                                        <th>Sản xuất bởi</th>
                                         <th>Hình ảnh nổi bật</th>
                                         <th>Gía gốc</th>
                                         <th>Gía giảm</th>
-                                        <th>Danh mục chính</th>
-                                        <th>Danh mục phụ</th>
+                                        <th>Số lượng tồn kho</th>
+                                        <th>Danh mục</th>
+                                        <th>Thương hiệu</th>
                                         <th>Ngày tạo</th>
                                         <th>Kích hoạt</th>
                                         <th>Nổi bật</th>
-                                        @can('Sao chép thông tin sản phẩm')
-                                            <th>Sao chép thông tin</th>
-                                        @endcan
+                                        <th>Sao chép thông tin</th>
                                         @can('Xem đánh giá sản phẩm')
                                             <th>Đánh giá</th>
                                         @endcan
                                         @can('Thêm hình ảnh liên quan sản phẩm')
                                             <th>Hình ảnh liên quan</th>
                                         @endcan
+                                        @can('Xem mô tả sản phẩm')
+                                            <th>Mô tả</th>
+                                        @endcan
                                         @can('Xem mô tả chi tiết sản phẩm')
                                             <th>Mô tả chi tiết</th>
+                                        @endcan
+                                        @can('Xem hướng dẫn sử dụng sản phẩm')
+                                            <th>Hướng dẫn sử dụng</th>
                                         @endcan
                                         <th>Xem Preview</th>
                                         @can('Chỉnh sửa sản phẩm')
@@ -53,6 +60,8 @@
                                             <td>{{ $product->id }}</td>
                                             <td>{{ $product->barcode }}</td>
                                             <td>{{ $product->name }}</td>
+                                            <td>{{ $product->weight }}</td>
+                                            <td>{{ $product->made_by }}</td>
                                             @php
                                                 $featured_image = $product->featured_image;
                                             @endphp
@@ -64,32 +73,26 @@
                                             </td>
                                             <td>{{ number_format($product->price) }} VND</td>
                                             <td>{{ number_format($product->sale_price) }} VND</td>
-                                            <td>{{ $product->parentCategory->name }}
+                                            <td>{{ $product->inventory_qty }}</td>
+                                            <td>{{ $product->subCategory->parentCategory->name }}/{{ $product->subCategory->name }}
                                             </td>
-                                            <td>{{ !empty($product->sub_category_id) ? $product->subCategory->name : '' }}
-                                            </td>
+                                            <td>{{ $product->brand->name }}</td>
                                             <td>{{ $product->created_date }}</td>
                                             <td>
-                                                {!! $product->is_active == 1
-                                                    ? '<i class="fa fa-check-square" style="color: green;" aria-hidden="true"></i>'
-                                                    : '<i class="fa fa-times-circle-o" style="color: red;" aria-hidden="true"></i>' !!}
+                                                {!! $product->is_active == 1 ? '<i class="fa fa-check-square" style="color: green;" aria-hidden="true"></i>' : '<i class="fa fa-times-circle-o" style="color: red;" aria-hidden="true"></i>' !!}
                                             </td>
                                             <td>
-                                                {!! $product->featured == 1
-                                                    ? '<i class="fa fa-check-square" style="color: green;" aria-hidden="true"></i>'
-                                                    : '<i class="fa fa-times-circle-o" style="color: red;" aria-hidden="true"></i>' !!}
+                                                {!! $product->featured == 1 ? '<i class="fa fa-check-square" style="color: green;" aria-hidden="true"></i>' : '<i class="fa fa-times-circle-o" style="color: red;" aria-hidden="true"></i>' !!}
                                             </td>
-                                            @can('Sao chép thông tin sản phẩm')
-                                                <td>
-                                                    <form action="{{ route('admin.product.copy') }}" method="POST">
-                                                        @csrf
-                                                        @method('POST')
-                                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                        <button type="submit" class="btn btn-warning">Copy
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            @endcan
+                                            <td>
+                                                <form action="{{ route('admin.product.copy') }}" method="POST">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <button type="submit" class="btn btn-warning">Copy
+                                                    </button>
+                                                </form>
+                                            </td>
                                             @can('Xem đánh giá sản phẩm')
                                                 <td><a href="{{ route('admin.product.comments', $product->id) }}"
                                                         class="btn btn-primary">Xem</a></td>
@@ -98,8 +101,16 @@
                                                 <td><a href="{{ route('admin.product.imageItems', $product->id) }}"
                                                         class="btn btn-secondary">Thêm</a></td>
                                             @endcan
+                                            @can('Xem mô tả sản phẩm')
+                                                <td><a href="{{ route('admin.product.description', [$product->id]) }}"
+                                                        class="btn btn-primary">Xem</a></td>
+                                            @endcan
                                             @can('Xem mô tả chi tiết sản phẩm')
                                                 <td><a href="{{ route('admin.product.descriptionDetails', [$product->id]) }}"
+                                                        class="btn btn-primary">Xem</a></td>
+                                            @endcan
+                                            @can('Xem hướng dẫn sử dụng sản phẩm')
+                                                <td><a href="{{ route('admin.product.useTutorials', [$product->id]) }}"
                                                         class="btn btn-primary">Xem</a></td>
                                             @endcan
                                             <td>
@@ -124,33 +135,24 @@
                                         <th>Mã</th>
                                         <th>Barcode</th>
                                         <th>Tên</th>
+                                        <th>Trọng lượng</th>
+                                        <th>Sản xuất bởi</th>
                                         <th>Hình ảnh nổi bật</th>
                                         <th>Gía gốc</th>
                                         <th>Gía giảm</th>
-                                        <th>Danh mục chính</th>
-                                        <th>Danh mục phụ</th>
+                                        <th>Số lượng tồn kho</th>
+                                        <th>Danh mục</th>
+                                        <th>Thương hiệu</th>
                                         <th>Ngày tạo</th>
-                                        <th>Kích hoạt</th>
                                         <th>Nổi bật</th>
-                                        @can('Sao chép thông tin sản phẩm')
-                                            <th>Sao chép thông tin</th>
-                                        @endcan
-                                        @can('Xem đánh giá sản phẩm')
-                                            <th>Đánh giá</th>
-                                        @endcan
-                                        @can('Thêm hình ảnh liên quan sản phẩm')
-                                            <th>Hình ảnh liên quan</th>
-                                        @endcan
-                                        @can('Xem mô tả chi tiết sản phẩm')
-                                            <th>Mô tả chi tiết</th>
-                                        @endcan
-                                        <th>Xem Preview</th>
-                                        @can('Chỉnh sửa sản phẩm')
-                                            <th>Chỉnh sửa</th>
-                                        @endcan
-                                        @can('Xóa sản phẩm')
-                                            <th>Xóa</th>
-                                        @endcan
+
+                                        <th>Đánh giá</th>
+                                        <th>Hình ảnh liên quan</th>
+                                        <th>Mô tả</th>
+                                        <th>Mô tả chi tiết</th>
+                                        <th>Hướng dẫn sử dụng</th>
+                                        <th>Chỉnh sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -7,9 +7,25 @@
     <title>{{ !empty($title) ? $title . ' | ' . request()->getHost() : $headerData->company['name'] }}</title>
 
     @if (!empty($seoKeyword))
-        <meta name="description" content='{!! $seoKeyword !!}'>
+        <meta name="description" content='{{ html_entity_decode(strip_tags($seoKeyword)) }}'>
     @else
         <meta name="description" content="{{ $headerData->company['seo_keyword'] }}">
+    @endif
+
+    @if (!empty($mainProduct))
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{{ ucwords(mb_strtolower($mainProduct->name, 'UTF-8')) }}" />
+        <meta property="og:description" content='{!! html_entity_decode(strip_tags($mainProduct->description)) !!}' />
+        <meta property="og:url" content="{{ route('site.product.show', [$mainProduct->slug]) }}" />
+        <meta property="og:image" content="{{ asset("storage/uploads/$mainProduct->featured_image") }}" />
+    @endif
+
+    @if (!empty($mainBlog))
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{{ ucwords(mb_strtolower($mainBlog->title, 'UTF-8')) }}" />
+        <meta property="og:description" content='{!! html_entity_decode(strip_tags($mainBlog->description)) !!}' />
+        <meta property="og:url" content="{{ route('site.blog.show', [$mainBlog->slug]) }}" />
+        <meta property="og:image" content="{{ asset("storage/uploads/$mainBlog->featured_image") }}" />
     @endif
 
     @php
@@ -23,7 +39,8 @@
 
     <!-- Only lashamintroduction.html, samnuihanquoc.html and storesystems.html -->
     <link rel='stylesheet' id='flatsome-main-css'
-        href='{{ asset('template/site/vendor/flatsome/assets/css/flatsome2916.css') }}' type='text/css' media='all' />
+        href='{{ asset('template/site/vendor/flatsome/assets/css/flatsome2916.css') }}' type='text/css'
+        media='all' />
 
     <link rel="stylesheet" href="{{ asset('template/site/css/all.mobile.css') }}" />
     <link rel="stylesheet" href="{{ asset('template/site/css/all.desktopfffc.css') }}" />
@@ -110,7 +127,6 @@
             opacity: 0.3;
             pointer-events: none;
         }
-
     </style>
 
 </head>

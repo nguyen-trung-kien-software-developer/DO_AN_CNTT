@@ -10280,7 +10280,8 @@ textarea {
 }
 
 .featured_cate_home_1 {
-    width: 14%;
+    width: auto;
+    padding: 0 12px;
 }
 
 .cate_home_2 {
@@ -11163,7 +11164,7 @@ textarea {
 }
 .hide_ul_menu {
     float: left;
-    width: 100%;
+    width: 89% !important;
     background: #fff;
 }
 .hide_ul_menu {
@@ -20237,3 +20238,5 @@ form#contactform .bt-reset {
     padding-bottom: 10px;
     font-size: 12px;
 }
+
+

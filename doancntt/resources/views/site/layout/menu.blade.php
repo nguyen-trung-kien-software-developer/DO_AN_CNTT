@@ -1,7 +1,8 @@
 <div id="menu_home">
     <div class="menu_home clearfix">
         <div class="cate_home cate_home_one">
-            <p class="cate_parent_name">Tất cả danh mục</p>
+            <p class="cate_parent_name"><a href="{{ route('site.showAllProduct') }}" style="color: #fefefe">Tất
+                    cả sản phẩm</a></p>
             <ul class="hide_ul_menu hide_ul_menu_cate">
                 @foreach ($menuData->allParentCategories as $parentCategory)
                     <li class="menu_li_left">

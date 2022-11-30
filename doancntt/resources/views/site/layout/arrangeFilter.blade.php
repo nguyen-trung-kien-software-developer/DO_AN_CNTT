@@ -18,7 +18,7 @@
         <option value="alpha-asc" data-url="{{ request()->fullUrlWithQuery(['sort' => 'alpha-asc']) }}"
             {{ request()->input('sort') == 'alpha-asc' ? 'selected' : '' }}>Từ A - Z
         </option>
-        <option value="alpha-desc" data-url="{{ request()->fullUrlWithQuery(['sort' => 'alpha-desc']) }}"
+        <option value="alpha-desc" data-url="{{ request()->fullUrlWithQuery(['sort' => 'alpha-asc']) }}"
             {{ request()->input('sort') == 'alpha-asc' ? 'selected' : '' }}>Từ Z - A
         </option>
     </select>

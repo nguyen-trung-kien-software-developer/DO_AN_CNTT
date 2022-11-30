@@ -5,12 +5,47 @@ $.ajaxSetup({
 });
 
 $(function () {
+    // Form Validation
+    $("#blog_validation_form").validate({
+        rules: {
+            // simple rule, converted to {required:true}
+            title: {
+                required: true,
+            },
+            featured_image: {
+                required: true,
+            },
+            description: {
+                required: true,
+            },
+            content: {
+                required: true,
+            },
+        },
+
+        messages: {
+            title: {
+                required: "Vui lòng nhập tiêu đề",
+            },
+            featured_image: {
+                required: "Vui lòng tải ảnh nổi bật lên",
+            },
+            description: {
+                required: "Vui lòng nhập mô tả",
+            },
+            content: {
+                required: "Vui lòng nhập nội dung",
+            },
+        },
+    });
+
     // Ajax search
     var timeout = null;
     $(".search_product_name").keyup(function (event) {
         $(".search-result").hide();
         clearTimeout(timeout);
         var pattern = $(this).val();
+        let type = $(this).prev(".adding-type").val();
 
         $(".search-result").html("");
 
@@ -19,7 +54,7 @@ $(function () {
                 $.ajax({
                     url: "/admin/ajax/ajaxSearchProducts",
                     type: "GET",
-                    data: { pattern: pattern },
+                    data: { pattern: pattern, type },
                     dataType: "JSON",
                 }).done(function (data) {
                     if (data.isSuccess) {
@@ -63,7 +98,7 @@ $(function () {
     //     $.ajax({
     //         type: "POST",
     //         url: "/admin/package/addProductToPackage",
-    //         data: { product_id, qty },
+    //         data: { product_id, qty },z
     //         dataType: "JSON",
     //         success: function (res) {
     //             if (res.isSuccess) {
@@ -428,6 +463,7 @@ $(function () {
         ).style.left += `98% + ${widths[colIndex]}px`;
         colIndex++;
     });
+
     $(".left-scroll").on("click", function () {
         if (colIndex == 0) return;
         colIndex--;
@@ -454,7 +490,26 @@ $(function () {
             }, 100);
         })
         .bind("mouseup mouseleave touchend", function () {
-            $(this).removeClass("active");
+            clearInterval(timeOut);
+        });
+
+    $(".right-scroll")
+        .on("mousedown touchstart", function (e) {
+            timeOut = setInterval(function () {
+                if (colIndex == widths.length - 1) return;
+                document.querySelector(".table-responsive").scrollLeft +=
+                    widths[colIndex];
+
+                document.querySelector(
+                    ".left-scroll"
+                ).style.left += `3% + ${widths[colIndex]}px`;
+                document.querySelector(
+                    ".right-scroll"
+                ).style.left += `98% + ${widths[colIndex]}px`;
+                colIndex++;
+            }, 100);
+        })
+        .bind("mouseup mouseleave touchend", function () {
             clearInterval(timeOut);
         });
 
@@ -566,7 +621,7 @@ function updateRowIntoProductList(data) {
 }
 
 //Thêm sản phẩm vào package
-function addProductInPackage(product_id) {
+function addProductInPackage(product_id, type) {
     // let product_id = $("input[name=product_id]").val();
     let qty = $(".product_quantity").val();
 
@@ -574,11 +629,14 @@ function addProductInPackage(product_id) {
         alert("Vui lòng nhập mã sản phẩm");
         return;
     }
-    if (!qty) {
+    if (!qty && type != "product-blog-item") {
         alert("Vui lòng nhập số lượng sản phẩm");
         return;
     }
 
+    if (type == "product-blog-item") {
+        qty = 1;
+    }
     $.ajax({
         type: "POST",
         url: "/admin/package/addProductToPackage",

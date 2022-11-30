@@ -1,11 +1,12 @@
 <div class="box_product_v2">
     <div class="box_product_v2_img"> <a href="{{ route('site.product.show', [$product->slug]) }}"
-            title="{{ $product->name }}">
+            title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}">
             <img class="lazy" src="{{ asset("storage/uploads/$product->featured_image") }}"
-                alt="{{ $product->name }}" style="display: block;"> </a> </div>
+                alt="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}" style="display: block;"> </a> </div>
     <div class="box_product_v2_name_element">
         <div class="box_product_v2_name"> <a href="{{ route('site.product.show', [$product->slug]) }}"
-                title="{{ $product->name }}">{{ $product->name }}</a> </div>
+                title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}">{{ App\Helpers\StrHelper::substrwords(ucwords(mb_strtolower($product->name, 'UTF-8')), 55) }}</a>
+        </div>
         <div class="box_product_v2_price clearfix">
             <div class="box_product_v2_price_num">
                 @if ($product->price == 0 && $product->sale_price == 0)

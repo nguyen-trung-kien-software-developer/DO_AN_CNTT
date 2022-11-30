@@ -51,6 +51,29 @@
                             @endif
                         </div>
 
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-primary" type="button">Hình icon</button>
+                                </div>
+
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input">
+                                    <input type="hidden" name="icon_image" value="">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
+                                @if (!empty($errors->first('icon_image')))
+                                    <div class="col-md-6" style="color:red; margin-bottom:12px;">
+                                        {{ $errors->first('icon_image') }}</div>
+                                @endif
+                            </div>
+                            <input type="hidden" id="image_type" value="sub_category_image">
+
+                            <div id="image_show">
+
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Thêm</button>
                     </form>
                 </div>

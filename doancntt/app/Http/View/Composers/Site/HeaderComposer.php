@@ -12,7 +12,6 @@ class HeaderComposer
 
     protected $companyService;
     protected $parentCategoryService;
-    protected $cartService;
 
     public function __construct(CompanyService $companyService, ParentCategoryService $parentCategoryService, CartService $cartService)
     {

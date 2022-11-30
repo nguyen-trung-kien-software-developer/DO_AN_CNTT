@@ -13,8 +13,8 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form class="form-valide-with-icon" action="{{ route('admin.blog.update', $blog->id) }}" method="POST"
-                        novalidate="novalidate">
+                    <form id="blog_validation_form" class="form-valide-with-icon"
+                        action="{{ route('admin.blog.update', $blog->id) }}" method="POST" novalidate="novalidate">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -30,22 +30,6 @@
                             @if (!empty($errors->first('title')))
                                 <div class="col-md-6" style="color:red; margin-bottom:12px;">
                                     {{ $errors->first('title') }}</div>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text-label">Tác giả</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control" id="val-username1" name="author"
-                                    placeholder="Tác giả.." value="{{ $blog->author }}">
-                            </div>
-                            @if (!empty($errors->first('author')))
-                                <div class="col-md-6" style="color:red; margin-bottom:12px;">
-                                    {{ $errors->first('author') }}</div>
                             @endif
                         </div>
 
@@ -96,6 +80,89 @@
                                 <div class="col-md-6" style="color:red; margin-bottom:12px;">
                                     {{ $errors->first('content') }}</div>
                             @endif
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="card-title">Danh sách sản phẩm đã được gợi ý</h4>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Mã</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Gía</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($blog->productBlogItems as $productBlogItem)
+                                        <tr class="{{ $productBlogItem->blog_id }}-{{ $productBlogItem->product_id }}">
+                                            <input type="hidden" name="ids[]"
+                                                value="{{ $productBlogItem->product_id }}">
+                                            <td>{{ $productBlogItem->product->id }}</td>
+                                            <td>{{ $productBlogItem->product->name }}</td>
+                                            <td>{{ number_format($productBlogItem->product->sale_price) }} VND</td>
+                                            <td>
+                                                <a class="btn btn-danger remove-product" href="javascript:void(0)"
+                                                    onclick="deleteItemInBoughtList(this)">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="card-title">Thêm Sản Phẩm Gợi Ý</h4>
+                        </div>
+
+                        {{-- <div class="form-group">
+                            <label class="text-label">Nhập số lượng sản phẩm</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control product_quantity" id="val-username1"
+                                    name="qty" placeholder="Số lượng sản phẩm.." value="">
+                            </div>
+                        </div> --}}
+
+                        <div class="form-group">
+                            <label class="text-label">Nhập tên sản phẩm</label>
+                            <div class="input-group">
+                                <input type="hidden" class="adding-type" value="product-blog-item">
+                                <input type="text" class="form-control search_product_name" id="val-username1"
+                                    name="product_name" placeholder="Tên sản phẩm.." value="">
+                            </div>
+                            <div class="search-result product-blog-item">
+                            </div>
+                        </div>
+
+                        <div class="table-responsive form-group mb-5">
+                            <label for="example1">Danh sách sản phẩm</label>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Mã</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Gía</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody-productlist">
+                                    <tr class="no-data">
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                         <button type="submit" class="btn btn-primary mr-5">Cập nhật</button>

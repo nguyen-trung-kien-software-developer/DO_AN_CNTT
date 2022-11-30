@@ -28,50 +28,30 @@
                                     {{ $errors->first('name') }}</div>
                             @endif
                         </div>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button">ảnh icon</button>
-                                </div>
-
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input">
-                                    <input type="hidden" name="icon_image" value="">
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
-                                @if (!empty($errors->first('icon_image')))
-                                    <div class="col-md-6" style="color:red; margin-bottom:12px;">
-                                        {{ $errors->first('icon_image') }}</div>
-                                @endif
-                            </div>
-                            <input type="hidden" id="image_type" value="product_image">
-
-                            <div id="image_show">
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <div class="input-group mb-3">
+                            <label class="text-label">Bài giới thiệu</label>
+                            <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button">ảnh banner</button>
+                                    <span class="input-group-text"> <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </span>
                                 </div>
+                                <select class="form-control" name="introduction">
+                                    <option value="">Vui lòng chọn bài giới thiệu</option>
 
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input">
-                                    <input type="hidden" name="banner_image" value="">
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
-                                @if (!empty($errors->first('banner_image')))
-                                    <div class="col-md-6" style="color:red; margin-bottom:12px;">
-                                        {{ $errors->first('banner_image') }}</div>
-                                @endif
+                                    @foreach ($introductions as $introduction)
+                                        <option value="{{ $introduction->id }}">
+                                            {{ $introduction->title }}</option>
+                                    @endforeach
+                                    <option value="null">Không có</option>
+                                </select>
                             </div>
-                            <input type="hidden" id="image_type" value="product_image">
-
-                            <div id="image_show">
-
-                            </div>
+                            @if (!empty($errors->first('customer')))
+                                <div class="col-md-6" style="color:red; margin-bottom:12px;">
+                                    {{ $errors->first('customer') }}</div>
+                            @endif
                         </div>
+
 
                         <button type="submit" class="btn btn-primary">Thêm</button>
                     </form>

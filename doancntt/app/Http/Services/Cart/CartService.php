@@ -11,9 +11,9 @@ class CartService
 {
     public function fetch()
     {
-        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->email))) {
-            Cart::instance('wishlist')->restore(Auth::guard('customer')->user()->email);
-            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->email);
+        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->id))) {
+            Cart::instance('wishlist')->restore(Auth::guard('customer')->user()->id);
+            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->id);
         }
 
         if (Cart::instance('wishlist')->count() == 0) {
@@ -35,7 +35,7 @@ class CartService
         $qty = (int) $request->input('qty_in_cart');
 
         $product = Product::find($product_id);
-        $product_name = $product->name;
+        $product_name = ucfirst(mb_strtolower($product->name, 'UTF-8'));
         $img = $product->featured_image;
         $sale_price = $product->sale_price;
         $brand_name = $product->brand->name;
@@ -48,9 +48,9 @@ class CartService
 
         $cart = Cart::instance('wishlist')->add(['id' => $product_id, 'name' => $product_name, 'qty' => $qty, 'price' => $sale_price, 'weight' => 0, 'options' => ['img' => $img, 'brand_name' => $brand_name, 'slug' => $slug]])->associate('App\Models\Product');
 
-        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->email))) {
-            Cart::instance('wishlist')->restore(Auth::guard('customer')->user()->email);
-            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->email);
+        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->id))) {
+            Cart::instance('wishlist')->restore(Auth::guard('customer')->user()->id);
+            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->id);
         }
 
         // dd($cart);
@@ -65,9 +65,9 @@ class CartService
 
         $oneCart = Cart::instance('wishlist')->update($rowId, $qty);
 
-        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->email))) {
-            Cart::instance('wishlist')->erase(Auth::guard('customer')->user()->email);
-            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->email);
+        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->id))) {
+            Cart::instance('wishlist')->erase(Auth::guard('customer')->user()->id);
+            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->id);
         }
 
         return $oneCart;
@@ -77,9 +77,9 @@ class CartService
     {
         Cart::instance('wishlist')->remove($rowId);
 
-        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->email))) {
-            Cart::instance('wishlist')->erase(Auth::guard('customer')->user()->email);
-            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->email);
+        if (Auth::guard('customer')->check() && (!empty(Auth::guard('customer')->user()->id))) {
+            Cart::instance('wishlist')->erase(Auth::guard('customer')->user()->id);
+            Cart::instance('wishlist')->store(Auth::guard('customer')->user()->id);
         }
     }
 }

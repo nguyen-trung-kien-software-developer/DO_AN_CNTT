@@ -22,9 +22,9 @@
                                         <th>Ngày Tạo</th>
                                         <th>Nội dung</th>
                                         <th>Sửa</th>
-                                        {{-- @can('Xóa đánh giá sản phẩm') --}}
+                                        @can('Xóa đánh giá sản phẩm')
                                             <th>Xóa</th>
-                                        {{-- @endcan --}}
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,11 +40,11 @@
                                                     class="btn btn-info">Sửa
                                                 </a>
                                             </td>
-                                            {{-- @can('Xóa đánh giá sản phẩm') --}}
+                                            @can('Xóa đánh giá sản phẩm')
                                                 <td><button class="btn btn-danger btn sweet-confirm destroy"
                                                         data-url="{{ route('admin.product.destroyComment', $comment->id) }}">Xóa</button>
                                                 </td>
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>

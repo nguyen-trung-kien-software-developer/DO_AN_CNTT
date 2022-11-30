@@ -2,12 +2,18 @@
 
 namespace App\Providers;
 
+use App\Events\CustomerContactEvent;
+use App\Events\CustomerSendRequestConsultantEvent;
+use App\Events\ResponseConsultantEmailEvent;
+use App\Events\ThankYouForBuyingEvent;
+use App\Listeners\CustomerContactListener;
+use App\Listeners\CustomerSendRequestConsultantListener;
+use App\Listeners\ResponseConsultantEmailListener;
+use App\Listeners\ThankYouForBuyingListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use App\Events\CustomerSendRequestConsultantEvent;
-use App\Listeners\CustomerSendRequestConsultantListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -23,6 +29,18 @@ class EventServiceProvider extends ServiceProvider
         CustomerSendRequestConsultantEvent::class => [
             CustomerSendRequestConsultantListener::class,
         ],
+        CustomerContactEvent::class => [
+            CustomerContactListener::class,
+        ],
+        ThankYouForBuyingEvent::class => [
+            ThankYouForBuyingListener::class,
+        ],
+        ResponseConsultantEmailEvent::class => [
+            ResponseConsultantEmailListener::class,
+        ],
+        'Illuminate\Auth\Events\Verified' => [
+            'App\Listeners\LogVerifiedUser',
+        ],
     ];
 
     /**
@@ -35,6 +53,21 @@ class EventServiceProvider extends ServiceProvider
         Event::listen(
             CustomerSendRequestConsultantEvent::class,
             [CustomerSendRequestConsultantListener::class, 'handle']
+        );
+
+        Event::listen(
+            CustomerContactEvent::class,
+            [CustomerContactListener::class, 'handle']
+        );
+
+        Event::listen(
+            ThankYouForBuyingEvent::class,
+            [ThankYouForBuyingListener::class, 'handle']
+        );
+
+        Event::listen(
+            ResponseConsultantEmailEvent::class,
+            [ResponseConsultantEmailListener::class, 'handle']
         );
     }
 }

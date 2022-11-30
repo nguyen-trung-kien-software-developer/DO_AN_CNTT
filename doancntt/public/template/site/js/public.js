@@ -182,13 +182,17 @@ $(function () {
     //Validate register form
     $(".login_form_user").validate({
         rules: {
-            email: {
+            // email: {
+            //     required: true,
+            //     maxlength: 50,
+            //     email: true,
+            //     remote: "/ajax/checkExistEmailInLoginForm", //Check email duplicate
+            // },
+            mobile: {
                 required: true,
-                maxlength: 50,
-                email: true,
-                remote: "/ajax/checkExistEmailInLoginForm", //Check email duplicate
+                regex: /^0([0-9]{9,9})$/,
+                remote: "/ajax/checkExistMobileInLoginForm", //Check mobile duplicate
             },
-
             password: {
                 required: true,
                 // regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
@@ -196,11 +200,16 @@ $(function () {
         },
 
         messages: {
-            email: {
-                required: "Vui lòng nhập email",
-                maxlength: "Vui lòng nhập không quá 50 ký tự",
-                email: "Vui lòng nhập đúng định dạng email. vd: a@gmail.com",
-                remote: "Email không tồn tại !!",
+            // email: {
+            //     required: "Vui lòng nhập email",
+            //     maxlength: "Vui lòng nhập không quá 50 ký tự",
+            //     email: "Vui lòng nhập đúng định dạng email. vd: a@gmail.com",
+            //     remote: "Email không tồn tại !!",
+            // },
+            mobile: {
+                required: "Vui lòng nhập số điện thoại",
+                regex: "Vui lòng nhập 10 con số bắt đầu là 0",
+                remote: "Số điện thoại không tồn tại !!",
             },
             password: {
                 required: "Vui lòng nhập mật khẩu",
@@ -221,13 +230,14 @@ $(function () {
             mobile: {
                 required: true,
                 regex: /^0([0-9]{9,9})$/,
+                remote: "/ajax/notExistingMobile", //Check mobile duplicate
             },
 
             email: {
-                required: true,
+                // required: true,
                 maxlength: 50,
                 email: true,
-                remote: "/ajax/notExistingEmail", //Check email duplicate
+                // remote: "/ajax/notExistingEmail", //Check email duplicate
             },
 
             address: {
@@ -266,12 +276,13 @@ $(function () {
             mobile: {
                 required: "Vui lòng nhập số điện thoại",
                 regex: "Vui lòng nhập 10 con số bắt đầu là 0",
+                remote: "Số điện thoại đã tồn tại",
             },
             email: {
-                required: "Vui lòng nhập email",
+                // required: "Vui lòng nhập email",
                 maxlength: "Vui lòng nhập không quá 50 ký tự",
                 email: "Vui lòng nhập đúng định dạng email. vd: a@gmail.com",
-                remote: "Email đã tồn tại",
+                // remote: "Email đã tồn tại",
             },
             address: {
                 required: "Vui lòng nhập địa chỉ",

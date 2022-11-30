@@ -23,9 +23,7 @@
                                         <th>Số sao</th>
                                         <th>Ngày Tạo</th>
                                         <th>Nội dung</th>
-                                        @can('Chỉnh sửa đánh giá')
-                                            <th>Sửa</th>
-                                        @endcan
+                                        <th>Sửa</th>
                                         @can('Xóa đánh giá sản phẩm')
                                             <th>Xóa</th>
                                         @endcan
@@ -50,13 +48,11 @@
                                             <td>{{ $comment->star }}</td>
                                             <td>{{ $comment->created_date }}</td>
                                             <td>{{ $comment->description }}</td>
-                                            @can('Chỉnh sửa đánh giá')
-                                                <td>
-                                                    <a href="{{ route('admin.comment.edit', [$comment->id]) }}"
-                                                        class="btn btn-info">Sửa
-                                                    </a>
-                                                </td>
-                                            @endcan
+                                            <td>
+                                                <a href="{{ route('admin.comment.edit', [$comment->id]) }}"
+                                                    class="btn btn-info">Sửa
+                                                </a>
+                                            </td>
                                             @can('Xóa đánh giá sản phẩm')
                                                 <td><button class="btn btn-danger btn sweet-confirm destroy"
                                                         data-url="{{ route('admin.product.destroyComment', $comment->id) }}">Xóa</button>
@@ -70,17 +66,12 @@
                                         <th>Tên Sản Phẩm</th>
                                         <th>Hình ảnh sản phẩm</th>
                                         <th>Email</th>
-                                        <th>Số điện thoại</th>
                                         <th>Tên</th>
                                         <th>Số sao</th>
                                         <th>Ngày Tạo</th>
                                         <th>Nội dung</th>
-                                        @can('Chỉnh sửa đánh giá')
-                                            <th>Sửa</th>
-                                        @endcan
-                                        @can('Xóa đánh giá sản phẩm')
-                                            <th>Xóa</th>
-                                        @endcan
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

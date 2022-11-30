@@ -56,13 +56,8 @@
                                         <th>Tên hình ảnh</th>
                                         <th>Đường dẫn</th>
                                         <th>Mô tả hình ảnh</th>
-                                        @can('Chỉnh sửa hình ảnh trang thông tin')
-                                            <th>Sửa</th>
-                                        @endcan
-
-                                        @can('Xóa hình ảnh trang thông tin')
-                                            <th>Xóa</th>
-                                        @endcan
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

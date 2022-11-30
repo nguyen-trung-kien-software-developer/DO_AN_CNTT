@@ -26776,3 +26776,8 @@ html[dir="rtl"]
     right: auto;
     top: 24%;
 }
+
+.ck.ck-content:not(.ck-comment__input *) {
+    height: 500px;
+    overflow-y: auto;
+}

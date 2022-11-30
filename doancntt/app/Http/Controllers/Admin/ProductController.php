@@ -7,11 +7,12 @@ use App\Http\Requests\Admin\Product\AddImageItemToProductRequest;
 use App\Http\Requests\Admin\Product\DescriptionDetailsEditFormRequest;
 use App\Http\Requests\Admin\Product\ProductAddFormRequest;
 use App\Http\Requests\Admin\Product\ProductEditFormRequest;
-use App\Http\Services\Color\ColorService;
+use App\Http\Requests\Admin\Product\UpdateDescriptionFormRequest;
+use App\Http\Requests\Admin\Product\UseTutorialEditFormRequest;
+use App\Http\Services\Brand\BrandService;
 use App\Http\Services\Comment\CommentService;
 use App\Http\Services\ParentCategory\ParentCategoryService;
 use App\Http\Services\Product\ProductService;
-use App\Http\Services\Size\SizeService;
 use App\Models\Comment;
 use App\Models\ImageItem;
 use App\Models\Product;
@@ -21,17 +22,15 @@ class ProductController extends Controller
 {
     protected $productService;
     protected $parentCategoryService;
+    protected $brandService;
     protected $commentService;
-    protected $colorService;
-    protected $sizeService;
 
-    public function __construct(ProductService $productService, ParentCategoryService $parentCategoryService, CommentService $commentService, ColorService $colorService, SizeService $sizeService)
+    public function __construct(ProductService $productService, ParentCategoryService $parentCategoryService, BrandService $brandService, CommentService $commentService)
     {
         $this->productService = $productService;
         $this->parentCategoryService = $parentCategoryService;
+        $this->brandService = $brandService;
         $this->commentService = $commentService;
-        $this->colorService = $colorService;
-        $this->sizeService = $sizeService;
     }
     /**
      * Display a listing of the resource.
@@ -55,13 +54,11 @@ class ProductController extends Controller
     public function create()
     {
         $parentCategories = $this->parentCategoryService->getAllParentCategories();
-        $colors = $this->colorService->getAllColors();
-        $sizes = $this->sizeService->getAllSizes();
+        $brands = $this->brandService->getAllBrands();
 
         return view('admin.product.create', [
             'parentCategories' => $parentCategories,
-            'colors' => $colors,
-            'sizes' => $sizes,
+            'brands' => $brands
         ]);
     }
 
@@ -79,8 +76,7 @@ class ProductController extends Controller
             return redirect()->back();
         }
 
-        // return redirect()->route('admin.product.edit', [$product->id]);
-        return redirect()->back();
+        return redirect()->route('admin.product.edit', [$product->id]);
     }
 
     /**
@@ -103,14 +99,12 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $parentCategories = $this->parentCategoryService->getAllParentCategories();
-        $colors = $this->colorService->getAllColors();
-        $sizes = $this->sizeService->getAllSizes();
+        $brands = $this->brandService->getAllBrands();
 
         return view('admin.product.edit', [
             'product' => $product,
             'parentCategories' => $parentCategories,
-            'colors' => $colors,
-            'sizes' => $sizes,
+            'brands' => $brands
         ]);
     }
 
@@ -123,7 +117,6 @@ class ProductController extends Controller
      */
     public function update(ProductEditFormRequest $request, Product $product)
     {
-        // dd($request->all());
         $result = $this->productService->update($product, $request);
 
         if (!$result) {
@@ -148,6 +141,24 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function description(Product $product)
+    {
+        return view('admin.product.description', [
+            'product' => $product
+        ]);
+    }
+
+    public function updateDescription(UpdateDescriptionFormRequest $request, Product $product)
+    {
+        $result = $this->productService->updateDescription($product, $request);
+
+        if (!$result) {
+            return redirect()->back();
+        }
+
+        return redirect()->route('admin.product.index');
+    }
+
     public function descriptionDetails(Product $product)
     {
         return view('admin.product.descriptionDetails', [
@@ -158,6 +169,24 @@ class ProductController extends Controller
     public function updateDescriptionDetails(DescriptionDetailsEditFormRequest $request, Product $product)
     {
         $result = $this->productService->updateDescriptionDetails($product, $request);
+
+        if (!$result) {
+            return redirect()->back();
+        }
+
+        return redirect()->route('admin.product.index');
+    }
+
+    public function useTutorials(Product $product)
+    {
+        return view('admin.product.useTutorials', [
+            'product' => $product
+        ]);
+    }
+
+    public function updateUseTutorials(UseTutorialEditFormRequest $request, Product $product)
+    {
+        $result = $this->productService->updateUseTutorials($product, $request);
 
         if (!$result) {
             return redirect()->back();

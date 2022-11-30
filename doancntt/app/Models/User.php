@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password',
         'is_active',
         'private_image',
+        // 'cover_image',
         'created_at',
         'updated_at'
     ];

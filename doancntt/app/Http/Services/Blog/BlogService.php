@@ -3,9 +3,13 @@
 namespace App\Http\Services\Blog;
 
 use App\Models\Blog;
+use App\Models\ProductBlogItem;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Services\Package\PackageService;
+use App\Http\Services\ProductBlogItem\ProductBlogItemService;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Str;
 
 class BlogService
@@ -14,7 +18,7 @@ class BlogService
 
     function getAllBlogs()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('created_date', 'desc')->get();
 
         return $blogs;
     }
@@ -33,6 +37,7 @@ class BlogService
         $blogs = Blog::when($page, function ($query) use ($page) {
             $query->offset($page * $this->item_per_page);
         })
+            ->orderBy('created_date', 'desc')
             ->limit($this->item_per_page)
             ->get(); //nối URL parameters
 
@@ -92,6 +97,24 @@ class BlogService
                 'slug' => $slug,
             ]);
 
+            $blog_id = $blog->id;
+            $packageService = new PackageService();
+            $items = $packageService->fetch();
+
+            if (!empty($items)) {
+                foreach ($items as $item) {
+                    $product_id = $item->id;
+
+                    ProductBlogItem::create(
+                        [
+                            'blog_id' => (string) $blog_id,
+                            'product_id' => (string) $product_id,
+                        ]
+                    );
+                }
+                Cart::instance('adminWishlist')->destroy();
+            }
+
             Session::flash('success', 'Tạo mới tin tức thành công');
             return $blog;
         } catch (\Exception $error) {
@@ -103,6 +126,7 @@ class BlogService
     public function update($request, $blog)
     {
         try {
+            $blog_id = $blog->id;
             $title = $request->input('title');
             $featured_image = $request->input('featured_image');
             $description = $request->input('description');
@@ -128,6 +152,43 @@ class BlogService
             $blog->description = $description;
             $blog->slug = $slug;
             $blog->save();
+
+            $ids = $request->input('ids');
+            $blog = Blog::find($blog_id);
+
+            foreach ($blog->productBlogItems as $productBlogItem) {
+                if (empty($ids) || (!in_array($productBlogItem->product_id, $ids))) {
+                    ProductBlogItem::where('blog_id', $blog_id)
+                        ->where('product_id', $productBlogItem->product_id)
+                        ->delete();
+                }
+            }
+
+            // Add items
+            $packageService = new PackageService();
+            $items = $packageService->fetch();
+
+            if (!empty($items)) {
+                foreach ($items as $item) {
+                    $product_id = $item->id;
+
+                    $productBlogService = new ProductBlogItemService();
+                    $productBlog = $productBlogService->getProductBlogByOrderIdAndProductId($blog_id, $product_id);
+
+                    // Nếu sản phẩm đã tồn tại trong bài blog thi bỏ qua
+                    if (!empty($productBlog)) {
+                        continue;
+                    }
+
+                    ProductBlogItem::create(
+                        [
+                            'blog_id' => (string) $blog_id,
+                            'product_id' => (string) $product_id,
+                        ]
+                    );
+                }
+                Cart::instance('adminWishlist')->destroy();
+            }
 
             Session::flash('success', 'Cập nhật tin tức thành công');
             return true;

@@ -76,16 +76,9 @@
                                         <th>Hình ảnh nổi bật</th>
                                         <th>Mô tả tin tức</th>
 
-                                        @can('Xem nội dung chi tiết tin tức')
-                                            <th>Nội dung chi tiết</th>
-                                        @endcan
-                                        <th>Xem Preview</th>
-                                        @can('Chỉnh sửa tin tức')
-                                            <th>Chỉnh sửa</th>
-                                        @endcan
-                                        @can('Xóa tin tức')
-                                            <th>Xóa</th>
-                                        @endcan
+                                        <th>Nội dung chi tiết</th>
+                                        <th>Chỉnh sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

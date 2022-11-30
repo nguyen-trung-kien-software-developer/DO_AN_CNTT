@@ -14,7 +14,7 @@ class CustomerService
 {
     function getAllCustomers()
     {
-        $customers = Customer::where('id', '!=', 1)->get();
+        $customers = Customer::orderBy('id', 'desc')->get();
 
         return $customers;
     }
@@ -22,6 +22,13 @@ class CustomerService
     function getCustomerByEmail($email)
     {
         $customer = Customer::where('email', $email)->first();
+
+        return $customer;
+    }
+
+    function getCustomerByMobile($mobile)
+    {
+        $customer = Customer::where('mobile', $mobile)->first();
 
         return $customer;
     }
@@ -53,7 +60,8 @@ class CustomerService
             $housenumber_street = $request->input('address');
             $shipping_name = $request->input('name');
             $shipping_mobile = $request->input('mobile');
-            $is_active = 0;
+            // $is_active = 0;
+            $is_active = 1;
 
             $customer = Customer::create([
                 'name' => (string) $name,
@@ -68,12 +76,12 @@ class CustomerService
 
             // Auth::guard('customer')->loginUsingId($customer->id, true);
 
-            event(new Registered($customer));
+            // event(new Registered($customer));
 
             //Send a Welcome Email After customer registered
             // $customer->notify(new WelcomeEmailNotification($verification_code));
 
-            Session::flash('success', 'Đăng ký tài khoản thành công! Vui lòng kiểm tra email để xác thực tài khoản !');
+            Session::flash('success', 'Đăng ký tài khoản thành công!');
             return true;
         } catch (\Exception $err) {
             Session::flash('error', $err->getMessage());

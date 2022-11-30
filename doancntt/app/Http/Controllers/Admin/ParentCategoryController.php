@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ParentCategory\ParentCategoryAddFormRequest;
 use App\Http\Requests\Admin\ParentCategory\ParentCategoryEditFormRequest;
+use App\Http\Requests\Admin\ParentCategory\UpdateIntroductionFormRequest;
+use App\Http\Services\Introduction\IntroductionService;
 use App\Http\Services\ParentCategory\ParentCategoryService;
+use App\Models\Introduction;
 use App\Models\ParentCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -13,10 +16,12 @@ use Illuminate\Support\Facades\Session;
 class ParentCategoryController extends Controller
 {
     protected $parentCategoryService;
+    protected $introductionService;
 
-    public function __construct(ParentCategoryService $parentCategoryService)
+    public function __construct(ParentCategoryService $parentCategoryService, IntroductionService $introductionService)
     {
         $this->parentCategoryService = $parentCategoryService;
+        $this->introductionService = $introductionService;
     }
     /**
      * Display a listing of the resource.
@@ -39,7 +44,11 @@ class ParentCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.parentCategory.create');
+        $introductions = $this->introductionService->getAllIntroductions();
+
+        return view('admin.parentCategory.create', [
+            'introductions' => $introductions
+        ]);
     }
 
     /**
@@ -74,8 +83,10 @@ class ParentCategoryController extends Controller
      */
     public function edit(ParentCategory $parentCategory)
     {
+        $introductions = $this->introductionService->getAllIntroductions();
         return view('admin.parentCategory.edit', [
             'parentCategory' => $parentCategory,
+            'introductions' => $introductions
         ]);
     }
 
@@ -108,5 +119,29 @@ class ParentCategoryController extends Controller
         $result = $this->parentCategoryService->deleteById($parentCategory->id);
 
         return redirect()->back();
+    }
+
+    public function introduction(ParentCategory $parentCategory)
+    {
+        if (empty($parentCategory->introduction)) {
+            Session::flash('warning', "Danh mục $parentCategory->name không có bài giới thiệu");
+            return redirect()->back();
+        }
+
+        return view('admin.parentCategory.introduction', [
+            'parentCategory' => $parentCategory
+        ]);
+    }
+
+    public function updateIntroduction(UpdateIntroductionFormRequest $request, ParentCategory $parentCategory)
+    {
+        $introduction = Introduction::find($parentCategory->introduction->id);
+        $introduction = $this->introductionService->update($request, $introduction);
+
+        if (!$introduction) {
+            return redirect()->back();
+        }
+
+        return redirect()->route('admin.parentCategory.index');
     }
 }

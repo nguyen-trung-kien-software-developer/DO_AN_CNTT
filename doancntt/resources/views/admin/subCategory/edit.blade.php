@@ -10,8 +10,9 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form class="form-valide-with-icon" action="{{ route('admin.subCategory.update', [$subCategory->id]) }}"
-                        method="POST" novalidate="novalidate">
+                    <form class="form-valide-with-icon"
+                        action="{{ route('admin.subCategory.update', [$subCategory->id]) }}" method="POST"
+                        novalidate="novalidate">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -51,6 +52,35 @@
                                 <div class="col-md-6" style="color:red; margin-bottom:12px;">
                                     {{ $errors->first('parentCategory') }}</div>
                             @endif
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-primary" type="button">Hình icon</button>
+                                </div>
+
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input">
+                                    <input type="hidden" name="icon_image" value="{{ $subCategory->icon_image }}">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
+                                @if (!empty($errors->first('icon_image')))
+                                    <div class="col-md-6" style="color:red; margin-bottom:12px;">
+                                        {{ $errors->first('icon_image') }}</div>
+                                @endif
+                            </div>
+                            <input type="hidden" id="image_type" value="sub_category_image">
+
+                            <div id="image_show">
+                                @php
+                                    $icon_image = $subCategory->icon_image;
+                                @endphp
+                                <a href="{{ asset("storage/uploads/$icon_image") }}" target="_blank">
+                                    <img id="upload-image" src="{{ asset("storage/uploads/$icon_image") }}" width="35%"
+                                        height="300px">
+                                </a>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Cập nhật</button>

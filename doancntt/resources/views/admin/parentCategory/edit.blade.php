@@ -32,57 +32,27 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="input-group mb-3">
+                            <label class="text-label">Bài giới thiệu</label>
+                            <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button">ảnh icon</button>
+                                    <span class="input-group-text"> <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </span>
                                 </div>
-
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input">
-                                    <input type="hidden" name="icon_image" value="{{ $parentCategory->icon_image }}">
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
-                                @if (!empty($errors->first('icon_image')))
-                                    <div class="col-md-6" style="color:red; margin-bottom:12px;">
-                                        {{ $errors->first('icon_image') }}</div>
-                                @endif
+                                <select class="form-control" name="introduction">
+                                    <option value="">Vui lòng chọn bài giới thiệu</option>
+                                    @foreach ($introductions as $introduction)
+                                        <option value="{{ $introduction->id }}"
+                                            {{ $parentCategory->introduction_id == $introduction->id ? 'selected' : '' }}>
+                                            {{ $introduction->title }}</option>
+                                    @endforeach
+                                    <option value="null" {{ $parentCategory->introduction_id == null ? 'selected' : '' }}>
+                                        Không có</option>
+                                </select>
                             </div>
-                            <input type="hidden" id="image_type" value="product_image">
-
-                            <div id="image_show">
-                                <a href="{{ asset("storage/uploads/$parentCategory->icon_image") }}" target="_blank">
-                                    <img id="upload-image"
-                                        src="{{ asset("storage/uploads/$parentCategory->icon_image") }}" width="35%"
-                                        height="300px">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button">ảnh banner</button>
-                                </div>
-
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input">
-                                    <input type="hidden" name="banner_image" value="{{ $parentCategory->banner_image }}">
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
-                                @if (!empty($errors->first('banner_image')))
-                                    <div class="col-md-6" style="color:red; margin-bottom:12px;">
-                                        {{ $errors->first('banner_image') }}</div>
-                                @endif
-                            </div>
-                            <input type="hidden" id="image_type" value="product_image">
-
-                            <div id="image_show">
-                                <a href="{{ asset("storage/uploads/$parentCategory->banner_image") }}" target="_blank">
-                                    <img id="upload-image"
-                                        src="{{ asset("storage/uploads/$parentCategory->banner_image") }}" width="35%"
-                                        height="300px">
-                                </a>
-                            </div>
+                            @if (!empty($errors->first('customer')))
+                                <div class="col-md-6" style="color:red; margin-bottom:12px;">
+                                    {{ $errors->first('customer') }}</div>
+                            @endif
                         </div>
 
                         <button type="submit" class="btn btn-primary">Cập nhật</button>

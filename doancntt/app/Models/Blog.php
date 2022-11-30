@@ -21,4 +21,14 @@ class Blog extends Model
     ];
     protected $primaryKey = 'id';
     protected $table = 'blogs';
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_blog_items', 'blog_id', 'product_id');
+    }
+
+    public function productBlogItems()
+    {
+        return $this->hasMany(ProductBlogItem::class, 'blog_id', 'id');
+    }
 }

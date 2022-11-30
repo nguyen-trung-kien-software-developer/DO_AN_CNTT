@@ -33,4 +33,9 @@ class ParentCategory extends Model
     {
         return $this->hasMany(History::class, 'parent_category_id', 'id');
     }
+
+    public function products()
+    {
+        return $this->hasManyThrough(Product::class, SubCategory::class, 'parent_category_id', 'category_id')->orderBy('created_date', 'desc');
+    }
 }

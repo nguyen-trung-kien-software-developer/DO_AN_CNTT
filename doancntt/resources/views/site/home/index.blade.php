@@ -6,50 +6,51 @@
         <div class="block-slider-inner">
             <div id="jssor_1"
                 style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      position: relative;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      margin: 0 auto;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      top: 0px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      left: 0px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      width: 1600px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      height: 560px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      overflow: hidden;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      visibility: hidden;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  position: relative;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  margin: 0 auto;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           top: 0px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  left: 0px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  width: 1600px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  height: 560px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  overflow: hidden;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  visibility: hidden;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ">
                 <div data-u="loading" class="jssorl-009-spin"
                     style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        top: 0px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        left: 0px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        height: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        text-align: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        background-color: rgba(0, 0, 0, 0.7);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    position: absolute;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    top: 0px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    left: 0px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    height: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    text-align: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    background-color: rgba(0, 0, 0, 0.7);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ">
                     <img style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          margin-top: -19px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          position: relative;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          top: 50%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          width: 38px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          height: 38px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      margin-top: -19px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      position: relative;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      top: 50%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      width: 38px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      height: 38px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "
                         src="{{ asset('storage/uploads/spin.svg') }}" />
                 </div>
                 <div data-u="slides"
                     style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        cursor: default;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        position: relative;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        top: 0px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        left: 0px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        width: 1600px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        height: 560px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        overflow: hidden;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    cursor: default;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    position: relative;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    top: 0px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    left: 0px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    width: 1600px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    height: 560px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    overflow: hidden;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ">
                     @foreach ($banners as $banner)
                         <div>
                             <a href="{{ $banner->url }}" target="_blank"><img data-u="image"
-                                    data-src="{{ asset("storage/uploads/$banner->thumb") }}"
-                                    data-alt="{{ $banner->name }}" class="lazy" style="object-fit: cover;
-                                                    object-position: center;" /></a>
+                                    data-src="{{ asset("storage/uploads/$banner->thumb") }}" data-alt="{{ $banner->name }}"
+                                    class="lazy"
+                                    style="object-fit: cover;
+                                                object-position: center;" /></a>
                         </div>
                     @endforeach
                 </div>
@@ -58,12 +59,12 @@
                     <div data-u="prototype" class="i" style="width: 16px; height: 16px">
                         <svg viewBox="0 0 16000 16000"
                             style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            top: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            left: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            height: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        position: absolute;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        top: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        left: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        height: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ">
                             <circle class="b" cx="8000" cy="8000" r="5800"></circle>
                         </svg>
                     </div>
@@ -72,12 +73,12 @@
                     data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
                     <svg viewBox="0 0 16000 16000"
                         style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          top: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          left: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          height: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      position: absolute;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      top: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      left: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      height: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ">
                         <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
                     </svg>
                 </div>
@@ -85,12 +86,12 @@
                     data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
                     <svg viewBox="0 0 16000 16000"
                         style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          top: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          left: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          height: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      position: absolute;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      top: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      left: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      height: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ">
                         <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
                     </svg>
                 </div>
@@ -129,6 +130,7 @@
                                             src="{{ asset("storage/uploads/$subCategory->icon_image") }}" alt=""
                                             width="64" height="64">
                                         <strong style="margin-top: 6px;">{{ $subCategory->name }}</strong>
+
                                     </a>
                                 </div>
                                 @php
@@ -176,130 +178,36 @@
                                     @php
                                         $count = 1;
                                     @endphp
-                                    @foreach ($parentCategory->subCategories as $subCategory)
+                                    @foreach ($parentCategory->subCategories as $product)
                                         @php
                                             if ($count > 3) {
                                                 break;
                                             }
-                                            $product = [];
-                                            $category_id = $subCategory->id;
-                                            $product = App\Helpers\HomeHelper::getOneProductBySubCategoryIdOrderByCreatedDateAsc($category_id);
+                                            // $product = [];
+                                            // $category_id = $subCategory->id;
+                                            // $product = App\Helpers\HomeHelper::getOneProductBySubCategoryIdOrderByCreatedDateAsc($category_id);
                                         @endphp
-                                        @if (!empty($product))
-                                            <div class="box_product_v1">
-                                                <div class="box_product_v1_img">
-                                                    <a href="{{ route('site.product.show', [$product->slug]) }}"
-                                                        title="{{ $product->name }}">
-                                                        <img data-src="{{ asset("storage/uploads/$product->featured_image") }}"
-                                                            data-alt="{{ $product->name }}" class="lazy" />
-                                                    </a>
-                                                </div>
-                                                <div class="box_product_v1_name_element">
-                                                    <div class="box_product_v1_name">
-                                                        <a href="{{ route('site.product.show', [$product->slug]) }}"
-                                                            title="{{ $product->name }}">{{ $product->name }}</a>
-                                                        <a href="{{ route('site.product.show', [$product->slug]) }}"
-                                                            title="{{ $product->name }}"
-                                                            class="name_layout_list">{{ $product->name }}</a>
-                                                    </div>
-                                                    <div class="box_product_v1_price clearfix">
-                                                        <div class="box_product_v1_price_num">
-                                                            @if ($product->price == 0 && $product->sale_price == 0)
-                                                                <p class="price_v1">Liên hệ</p>
-                                                            @else
-                                                                @if ($product->price > $product->sale_price)
-                                                                    <p class="price_v1_old">
-                                                                        {{ number_format($product->price) }}
-                                                                        VND</p>
-                                                                    <p class="price_v1">
-                                                                        {{ number_format($product->sale_price) }} VND</p>
-                                                                @else
-                                                                    <p class="price_v1">
-                                                                        {{ number_format($product->sale_price) }} VND</p>
-                                                                @endif
-                                                            @endif
-                                                        </div>
-                                                        <div class="box_product_v1_price_percent">
-                                                            <form action="{{ route('site.cart.create') }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="product_id"
-                                                                    value="{{ $product->id }}">
-                                                                <input type="hidden" name="qty_in_cart" value="1">
-
-                                                                @if ($product->inventory_qty > 0)
-                                                                    @if ($product->price != 0 && $product->sale_price != 0)
-                                                                        <button class="btn_cart" type="submit"><b>Mua
-                                                                                ngay</b>
-                                                                        </button>
-                                                                    @else
-                                                                        <button class="btn_cart" type="button"
-                                                                            style="background-color: orange;"><b>Liên
-                                                                                hệ</b>
-                                                                        </button>
-                                                                    @endif
-                                                                @else
-                                                                    <button class="btn_cart" type="button"
-                                                                        style="background-color: red;"><b>Hết hàng</b>
-                                                                    </button>
-                                                                @endif
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @if ($product->price != 0 && $product->sale_price != 0 && $product->price > $product->sale_price)
-                                                    @php
-                                                        $discount_percentage = 0;
-                                                        $discount_percentage = (($product->price - $product->sale_price) * 100) / $product->price;
-                                                    @endphp
-                                                    <p class="price_percent">-{{ ceil($discount_percentage) }}%</p>
-                                                @endif
-                                            </div>
-                                        @else
-                                            @php
-                                                $count--;
-                                            @endphp
-                                        @endif
-
-                                        @php
-                                            $count++;
-                                        @endphp
-                                    @endforeach
-                                </div>
-                            @endif
-
-                            <div class="box_category_cate_pr clearfix">
-                                @php
-                                    $count = 1;
-                                @endphp
-                                @foreach ($parentCategory->subCategories as $subCategory)
-                                    @php
-                                        if ($count > 3) {
-                                            break;
-                                        }
-                                        $product = [];
-                                        $category_id = $subCategory->id;
-                                        $product = App\Helpers\HomeHelper::getOneProductBySubCategoryId($category_id);
-                                    @endphp
-                                    @if (!empty($product))
+                                        {{-- @if (!empty($product)) --}}
                                         <div class="box_product_v1">
                                             <div class="box_product_v1_img">
                                                 <a href="{{ route('site.product.show', [$product->slug]) }}"
-                                                    title="{{ $product->name }}">
+                                                    title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}">
                                                     <img data-src="{{ asset("storage/uploads/$product->featured_image") }}"
-                                                        data-alt="{{ $product->name }}" class="lazy" />
+                                                        data-alt="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}"
+                                                        class="lazy" />
                                                 </a>
                                             </div>
                                             <div class="box_product_v1_name_element">
                                                 <div class="box_product_v1_name">
                                                     <a href="{{ route('site.product.show', [$product->slug]) }}"
-                                                        title="{{ $product->name }}">{{ $product->name }}</a>
+                                                        title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}">{{ App\Helpers\StrHelper::substrwords(ucwords(mb_strtolower($product->name, 'UTF-8')), 55) }}</a>
                                                     <a href="{{ route('site.product.show', [$product->slug]) }}"
-                                                        title="{{ $product->name }}"
-                                                        class="name_layout_list">{{ $product->name }}</a>
+                                                        title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}"
+                                                        class="name_layout_list">{{ App\Helpers\StrHelper::substrwords(ucwords(mb_strtolower($product->name, 'UTF-8')), 55) }}</a>
                                                 </div>
                                                 <div class="box_product_v1_price clearfix">
                                                     <div class="box_product_v1_price_num">
-                                                        @if ($product->price == null && $product->sale_price == null)
+                                                        @if ($product->price == 0 && $product->sale_price == 0)
                                                             <p class="price_v1">Liên hệ</p>
                                                         @else
                                                             @if ($product->price > $product->sale_price)
@@ -341,7 +249,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if ($product->price != null && $product->sale_price != null && $product->price > $product->sale_price)
+                                            @if ($product->price != 0 && $product->sale_price != 0 && $product->price > $product->sale_price)
                                                 @php
                                                     $discount_percentage = 0;
                                                     $discount_percentage = (($product->price - $product->sale_price) * 100) / $product->price;
@@ -349,11 +257,107 @@
                                                 <p class="price_percent">-{{ ceil($discount_percentage) }}%</p>
                                             @endif
                                         </div>
-                                    @else
+                                        {{-- @else
+                                            @php
+                                                $count--;
+                                            @endphp
+                                        @endif --}}
+
+                                        @php
+                                            $count++;
+                                        @endphp
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            <div class="box_category_cate_pr clearfix">
+                                @php
+                                    $count = 1;
+                                @endphp
+                                @foreach ($parentCategory->products as $product)
+                                    @php
+                                        if ($count > 3) {
+                                            break;
+                                        }
+                                        // $product = [];
+                                        // $category_id = $subCategory->id;
+                                        // $product = App\Helpers\HomeHelper::getOneProductBySubCategoryId($category_id);
+                                    @endphp
+                                    {{-- @if (!empty($product)) --}}
+                                    <div class="box_product_v1">
+                                        <div class="box_product_v1_img">
+                                            <a href="{{ route('site.product.show', [$product->slug]) }}"
+                                                title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}">
+                                                <img data-src="{{ asset("storage/uploads/$product->featured_image") }}"
+                                                    data-alt="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}"
+                                                    class="lazy" />
+                                            </a>
+                                        </div>
+                                        <div class="box_product_v1_name_element">
+                                            <div class="box_product_v1_name">
+                                                <a href="{{ route('site.product.show', [$product->slug]) }}"
+                                                    title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}">{{ App\Helpers\StrHelper::substrwords(ucwords(mb_strtolower($product->name, 'UTF-8')), 55) }}</a>
+                                                <a href="{{ route('site.product.show', [$product->slug]) }}"
+                                                    title="{{ ucwords(mb_strtolower($product->name, 'UTF-8')) }}"
+                                                    class="name_layout_list">{{ App\Helpers\StrHelper::substrwords(ucwords(mb_strtolower($product->name, 'UTF-8')), 55) }}</a>
+                                            </div>
+                                            <div class="box_product_v1_price clearfix">
+                                                <div class="box_product_v1_price_num">
+                                                    @if ($product->price == null && $product->sale_price == null)
+                                                        <p class="price_v1">Liên hệ</p>
+                                                    @else
+                                                        @if ($product->price > $product->sale_price)
+                                                            <p class="price_v1_old">
+                                                                {{ number_format($product->price) }}
+                                                                VND</p>
+                                                            <p class="price_v1">
+                                                                {{ number_format($product->sale_price) }} VND</p>
+                                                        @else
+                                                            <p class="price_v1">
+                                                                {{ number_format($product->sale_price) }} VND</p>
+                                                        @endif
+                                                    @endif
+                                                </div>
+                                                <div class="box_product_v1_price_percent">
+                                                    <form action="{{ route('site.cart.create') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="product_id"
+                                                            value="{{ $product->id }}">
+                                                        <input type="hidden" name="qty_in_cart" value="1">
+
+                                                        @if ($product->inventory_qty > 0)
+                                                            @if ($product->price != 0 && $product->sale_price != 0)
+                                                                <button class="btn_cart" type="submit"><b>Mua
+                                                                        ngay</b>
+                                                                </button>
+                                                            @else
+                                                                <button class="btn_cart" type="button"
+                                                                    style="background-color: orange;"><b>Liên
+                                                                        hệ</b>
+                                                                </button>
+                                                            @endif
+                                                        @else
+                                                            <button class="btn_cart" type="button"
+                                                                style="background-color: red;"><b>Hết hàng</b>
+                                                            </button>
+                                                        @endif
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if ($product->price != null && $product->sale_price != null && $product->price > $product->sale_price)
+                                            @php
+                                                $discount_percentage = 0;
+                                                $discount_percentage = (($product->price - $product->sale_price) * 100) / $product->price;
+                                            @endphp
+                                            <p class="price_percent">-{{ ceil($discount_percentage) }}%</p>
+                                        @endif
+                                    </div>
+                                    {{-- @else
                                         @php
                                             $count--;
                                         @endphp
-                                    @endif
+                                    @endif --}}
 
                                     @php
                                         $count++;
@@ -380,7 +384,7 @@
                                     <div class="media_pr_right_name_price">
                                         <div class="media_pr_right_name">
                                             <a href="{{ route('site.blog.show', [$blog->slug]) }}"
-                                                title="{{ $blog->title }}">{{ $blog->title }}</a>
+                                                title="{{ $blog->title }}">{{ App\Helpers\StrHelper::substrwords($blog->title, 80) }}</a>
                                         </div>
                                         <div class="media_pr_right_num">
                                             <p class="price_v1 mgrt_10"><a
@@ -473,22 +477,22 @@
                         @php
                             $count = 1;
                         @endphp
-                        @foreach ($parentCategory->subCategories as $subCategory)
+                        @foreach ($parentCategory->products as $product)
                             @php
                                 if ($count > 8) {
                                     break;
                                 }
-                                $product = [];
-                                $category_id = $subCategory->id;
-                                $product = App\Helpers\HomeHelper::getOneProductBySubCategoryIdOrderByCreatedDateAsc($category_id);
+                                // $product = [];
+                                // $category_id = $subCategory->id;
+                                // $product = App\Helpers\HomeHelper::getOneProductBySubCategoryIdOrderByCreatedDateAsc($category_id);
                             @endphp
-                            @if (!empty($product))
-                                @include('site.layout.product')
-                            @else
+                            {{-- @if (!empty($product)) --}}
+                            @include('site.layout.product')
+                            {{-- @else
                                 @php
                                     $count--;
                                 @endphp
-                            @endif
+                            @endif --}}
 
                             @php
                                 $count++;
@@ -515,12 +519,10 @@
                                         data-src="{{ asset('storage/uploads/customer_icon_image.png') }}"
                                         data-alt="{{ $consultant->fullname }}" class="lazy" /></a>
                                 <span class="wf_comment">
-                                    <i class="ngay_1"></i>{{ $consultant->content }}<i
-                                        class="ngay_2"></i>
+                                    <i class="ngay_1"></i>{{ $consultant->content }}<i class="ngay_2"></i>
                                 </span>
                                 <span class="wp_line_sp"> <i class="line_sp"></i></span>
-                                <a href="javascript:void(0)"
-                                    class="name_comment_sp mb-2">{{ $consultant->fullname }}</a>
+                                <a href="javascript:void(0)" class="name_comment_sp mb-2">{{ $consultant->fullname }}</a>
                             </div>
                         @endforeach
 
@@ -561,7 +563,8 @@
                                     <option value="">Loại sản phẩm</option>
                                     @foreach ($parentCategories as $parentCategory)
                                         @foreach ($parentCategory->subCategories as $subCategory)
-                                            <option value="{{ $subCategory->name }}">{{ $subCategory->name }}</option>
+                                            <option value="{{ $subCategory->name }}">{{ $subCategory->name }}
+                                            </option>
                                         @endforeach
                                     @endforeach
                                 </select>

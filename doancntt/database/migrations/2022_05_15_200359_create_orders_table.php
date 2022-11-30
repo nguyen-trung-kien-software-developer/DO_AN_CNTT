@@ -30,7 +30,8 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')
                 ->references('id')
-                ->on('customers');
+                ->on('customers')
+                ->onDelete('cascade');
 
             $table->string('shipping_fullname', 255);
             $table->char('shipping_mobile', 15);

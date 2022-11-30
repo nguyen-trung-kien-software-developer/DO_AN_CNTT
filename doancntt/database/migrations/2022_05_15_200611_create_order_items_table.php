@@ -17,12 +17,14 @@ class CreateOrderItemsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')
-                ->on('products');
+                ->on('products')
+                ->onDelete('cascade');
 
             $table->string('order_id', 255);
             $table->foreign('order_id')
                 ->references('id')
-                ->on('orders');
+                ->on('orders')
+                ->onDelete('cascade');
 
             $table->integer('qty');
             $table->bigInteger('unit_price');

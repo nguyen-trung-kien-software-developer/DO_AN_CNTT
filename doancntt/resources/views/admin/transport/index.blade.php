@@ -49,12 +49,9 @@
                                         <th>STT</th>
                                         <th>Tỉnh/Thành Phố</th>
                                         <th>Giá</th>
-                                        @can('Chỉnh sửa vận chuyển')
-                                            <th>Chỉnh sửa</th>
-                                        @endcan
-                                        @can('Xóa vận chuyển')
-                                            <th>Xóa</th>
-                                        @endcan
+
+                                        <th>Chỉnh sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </tfoot>
                             </table>

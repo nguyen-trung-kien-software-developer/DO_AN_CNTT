@@ -202,9 +202,9 @@
 
 
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
+{{-- <script async defer crossorigin="anonymous"
 src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0&appId=621019949225450&autoLogAppEvents=1"
-nonce="J5TIjTtb"></script>
+nonce="J5TIjTtb"></script> --}}
 
 <script type="text/javascript">
     jssor_1_slider_init = function() {
